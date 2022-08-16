@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Profile Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+<style>
+  * {
+    margin: 0;
+    padding: 0;
+    font-family: cursive, sans-serif;
+}
+
+:root{
+    --first_color: rgb(20,33,61);
+    --second_color: rgb(252,163,17);
+}
+.head{
+    background-color: var(--first_color);
+    color: white;
+    text-align: center;
+    padding: 12px;
+}
+
+.dropdown{
+    text-align: left;
+    position: relative;
+}
+
+.btnDrop{
+    border: none;
+    background-color: var(--second_color);
+    font-size: 20px;
+    padding: 0px 12px;
+    border-radius: 25px;
+}
+
+.dropconten{
+    display: none;
+    position: absolute;
+    min-width: 160px;
+    background-color: lightgrey;
+    box-shadow: 8px 0px 16px 5px rgba(0,0,0,0.2);
+    border-radius: 15px;
+}
+
+.dropconten a{
+    color: black;
+    padding: 5px 10px;
+    text-decoration: none;
+    display: block;
+}
+
+.dropconten a:hover{
+    background-color: white;
+    border-radius: 15px;
+}
+
+.show{
+    display: block;
+    
+}
+
+#slider{
+    max-width: 1000px;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.imageslide{
+    vertical-align: middle;
+    display: none;
+}
+
+.imgslide{
+    width: 100%;
+    height: 500px;
+    border-radius: 25px;
+}
+
+.prevbtn, .nextbtn{
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    color: white;
+    background-color: rgba(0,0,0,0.2);
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+    border: none;
+}
+
+.nextbtn {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+}
+
+.fade {
+    -webkit-animation-name: fade;
+    -webkit-animation-duration: 2s;
+    animation-name: fade;
+    animation-duration: 2s;
+}
+  
+  @-webkit-keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
+}
+  
+  @keyframes fade {
+    from {opacity: .5}
+    to {opacity: 1}
+}
+
+main {
+    overflow: auto;
+}
+
+#content {
+    float: left;
+    width: 60%;
+}
+
+aside{
+    width: 25%;
+    float: right;
+    padding: 20px;
+    box-shadow: 8px 8px 16px 5px rgba(0,0,0,0.2);
+    text-align: center;
+    margin: 60px;
+}
+
+.table{
+    border-collapse: collapse;
+}
+
+.table th, .table td{
+    border: 2px solid rgba(0,0,0,0.2);
+    padding: 10px;
+}
+
+.table tr:nth-child(even){
+    background-color: #f2f2f2;;
+}
+
+#photo{
+    width: 200px;
+    height: 250px;
+}
+
+#content{
+    padding-left: 20px;
+}
+
+.hobbies{
+    display: flex;
+    padding: 20px;
+    box-shadow: 8px 8px 16px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    max-width: max-content;
+}
+
+.hobbiesfig{
+    padding: 18px;
+    max-width: 240px;
+    flex-grow: 1;
+    border: 5px solid rgba(0,0,0,0.2);
+    margin: 15px;
+}
+
+.skcolumn{
+    display: flex;
+    flex-direction: column;
+}
+
+.skrow{
+    display: flex;
+    flex-direction: row;
+    flex-grow: 1;
+}
+
+.skillfig{
+    flex-grow: 1;
+    max-width: 500px;
+    padding: 12px;
+    box-shadow: 8px 8px 16px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 10px;
+}
+
+.menu{
+    margin: 60px 0;
+}
+
+.menu h3{
+    margin-bottom: 20px;
+}
+#skillfig1{
+    flex-grow: 1;
+    padding: 12px;
+    box-shadow: 8px 8px 16px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    text-align: center;
+    margin: 20px 10px;
+}
+
+.exp-detail{
+    margin-top: 25px;
+    box-shadow: 8px 8px 16px 5px rgba(0,0,0,0.2);
+    border-radius: 10px;
+    padding: 15px;
+}
+
+.cap{
+    margin-bottom: 10px;
+}
+
+.skillphoto{
+    width: 200px;
+    height: 200px;
+}
+
+.hobyphoto{
+    width: 200px;
+    height: 250px;
+}
+
+footer{
+    margin-top: 100px;
+    padding: 20px;
+    background-color: var(--second_color);
+    text-align: center;
+    position: relative;
+}
+
+.copyright{
+    position: absolute;
+    top: 45%;
+    left: 45%
+}
+
+.contact{
+    text-align: right;
+}
+
+.contact h2{
+    margin-bottom: 15px;
+}
+.contact .logo a{
+    padding: 5px;
+    background-color: var(--first_color);
+    color: white;
+    font-size: 22px;
+}
+
+@media screen and (max-width: 1000px) {
+    #content,
+    aside {
+        width: 100%;
+        padding: 0;
+    }
+
+    aside{
+        margin: 0 auto;
+    }
+    
+    .hobbies{
+        width: max-content;
+        padding: 0;
+    }
+    .prevbtn, .nextbtn {
+        font-size: 11px
+    }
+
+    .copyright{
+        position: absolute;
+        top: 50px;
+        left: 0;
+    }
+}
+</style>
+<body>
+    <header class="head">
+        <h1>Ariel's Profile</h1>
+        <p>Programmer & Web Developer</p>
+        <nav class="dropdown">
+            <button class="btnDrop" id="btn"><i class="fa fa-bars"></i> Menu</button>
+            <div class="dropconten" id="drop-content">
+                <a href="#hobby">My Hobby</a>
+                <a href="#skill">My Skills</a>
+                <a href="#exp">My Experience</a>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <div id="slider">
+          <div class="imageslide fade">
+            <a href="https://github.com/Kouci01" target="_blank"><img src="https://storage.googleapis.com/profileasset/asset/mygithub.jpg" alt="My Github" class="imgslide"></a>
+          </div>
+          <div class="imageslide fade">
+            <a href="https://pddikti.kemdikbud.go.id/data_mahasiswa/Q0Y4NDNBNTMtQUFDNC00MEMzLTk4QUEtNEZEQzQwQjg3MDM0" target="_blank"><img src="https://storage.googleapis.com/profileasset/asset/pddikti.png" alt="My Pddikti" class="imgslide"></a>
+          </div>
+          <div class="imageslide fade">
+            <a href="https://binus.ac.id/" target="_blank"><img src="https://storage.googleapis.com/profileasset/asset/mygithub.jpg" alt="My Github" class="imgslide"></a>
+          </div>
+          <button class="prevbtn" onclick="pushSlide(-1)">&#10094;</button>
+          <button class="nextbtn" onclick="pushSlide(1)">&#10095;</button>
+        </div>
+        <div id="content">
+            <article id="hobby" class="menu">
+              <h3>Hobby & Interest</h3>
+              <div class="hobbies">
+                <figure class="hobbiesfig">
+                  <img class="hobyphoto" src="https://storage.googleapis.com/profileasset/asset/hobby/dance-icon.jpg" alt="Dance">
+                  <figcaption class="cap">Dance</figcaption>
+                </figure>
+                <figure class="hobbiesfig">
+                  <img class="hobyphoto" src="https://storage.googleapis.com/profileasset/asset/hobby/movies.jpg" alt="Movies">
+                  <figcaption class="cap">Watch Movies</figcaption>
+                </figure>
+                <figure class="hobbiesfig">
+                  <img class="hobyphoto" src="https://storage.googleapis.com/profileasset/asset/hobby/listenmusic.png" alt="Music">
+                  <figcaption class="cap">Listen Musics</figcaption>
+                </figure>
+              </div>  
+            </article>
+
+            <article id="skill" class="menu">
+              <h3>Skills</h3>
+              <div class="skills">
+                <div class="skcolumn">
+                  <div class="skrow">
+                    <figure class="skillfig">
+                      <img class="skillphoto" src="https://storage.googleapis.com/profileasset/asset/skill/c language.png" alt="C language">
+                      <figcaption class="cap"><strong>C language</strong></figcaption>
+                      <p>My ability to use coding in C language, the score is 2 out of 5 because I think my ability in C is not so complete but for simple coding I can still do it.</p>
+                    </figure>
+                    <figure class="skillfig">
+                      <img class="skillphoto" src="https://storage.googleapis.com/profileasset/asset/skill/java.png" alt="Java language">
+                      <figcaption class="cap"><strong>Java language</strong></figcaption>
+                      <p>My ability to use the Java language in conditioning the score is 3 out of 5. The reason I chose a score of 3 out of 5 for the Java language is because the coding with that language in my opinion is still quite basic even though I can already implement the MVC architecture and I've made small applications with that architecture.</p>
+                    </figure>
+                  </div>
+                </div>
+                
+                <div class="skcolumn">
+                  <div class="skrow">
+                    <figure class="skillfig">
+                      <img class="skillphoto" src="https://storage.googleapis.com/profileasset/asset/skill/python.jpg" alt="Python language">
+                      <figcaption class="cap"><strong>Python language</strong></figcaption>
+                      <p>I determine my ability to use Python, that is, the score is 3 out of 5. Where indeed, for programming in Python, I have studied many basics. Even so, for programming what I can do is still limited and not completely perfect. But I've also learned some Machine Learning algorithms such as Classification and Clustering either from data or from images.</p>
+                    </figure>
+                    <figure class="skillfig">
+                      <img class="skillphoto" src="https://storage.googleapis.com/profileasset/asset/skill/htmlcssjs.png" alt="Web language">
+                      <figcaption class="cap"><strong>Web language</strong></figcaption>
+                      <p>My ability to use a web design language in my opinion is the best than any other programming language. My ability score for this language I give 5 out of 5. Where with the reason that I have done many projects using the Web language, I have quite a lot of experience in using this language.</p>
+                    </figure>
+                  </div>
+                </div>
+
+                <div class="skcolumn">
+                  <div class="skrow">
+                    <figure id="skillfig1">
+                      <img class="skillphoto" src="https://storage.googleapis.com/profileasset/asset/skill/sqlserver.jpg" alt="Python language">
+                      <figcaption class="cap"><strong>SQL Server</strong></figcaption>
+                      <p>My ability in mastering the SQL Server language in managing databases I give a score of 4 out of 5. Where for material using the SQL language I quite like it. Which I also often use in Back-end programming to retrieve data from the model and provide the data to the front-end. In this database language, namely SQL Server, I have studied CRUD which in my opinion has covered the needs of data programming.</p>
+                    </figure>
+                  </div>
+                </div>
+              </div>  
+            </article>
+
+            <article id="exp" class="menu">
+              <h3>My Experience</h3>
+              <div class="exp-detail">
+                <p>October 2020 - February 2021</p>
+                <p>March 2021 - July 2021</p>
+                <p><strong>Binus University</strong></p>
+                <p>Computer Science Student Mentor</p>
+                <label>My Duty :</label>
+                <span>Responsibilites, Communication Skills, Teaching Students who are lacking in academics, Managing teaching Schedule, Be a Student Role Model, Embrace lacking student to be motivated in improving their academic score.</span>
+              </div>
+
+              <div class="exp-detail">
+                <p>Organization Experience</p>
+                <p>2020 - 2021</p>
+                <p>2021 - 2022</p>
+                <p><strong>Binus University (STAMANARA Organization)</strong></p>
+                <p>Staff of Support Division & Head of Support Division</p>
+                <label>My Duty :</label>
+                <span>Responsible in managing organization inventory, manage and provide organization merchandise and organization attributes, collaborate with other division and help other division task if needed.</span>
+              </div>
+            </article>
+        </div>
+
+        <aside>
+            <div class="myprofile">
+                <header>
+                    <h3>Ariel Peaceo Gunawan</h3>
+                    <p>My Profile's</p>
+                    <figure>
+                        <img id="photo" src="https://storage.googleapis.com/profileasset/asset/Foto_Profil.jpg" alt="Photo Ariel">
+                        <figcaption id="caption">Ariel's Photo Profile</figcaption>
+                    </figure>
+                </header>
+            </div>
+            <section>
+                <table class="table">
+                    <tbody>
+                      <tr>
+                        <th scope="row">Nama Lengkap</th>
+                        <td>Ariel Peaceo Gunawan</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Date of Birth</th>
+                        <td>16 Desember 2001</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Nationality</th>
+                        <td>Indonesia</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Contact Person</th>
+                        <td>+(62)81212103580</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Nationality</th>
+                        <td>Indonesia</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">Email</th>
+                        <td>ariel.pgbusinessac@gmail.com</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">City of Residence</th>
+                        <td>Jakarta Pusat</td>
+                      </tr>
+                      <tr>
+                        <th scope="row">University</th>
+                        <td>Bina Nusantara</td>
+                      </tr>
+                    </tbody>
+                </table>
+            </section>
+        </aside>
+    </main>
+
+    <footer>
+      <div class="copyright">
+        <span>Copyright &#169; 2022 Ariel Profile</span>
+      </div>
+      <div class="contact">
+        <h2>Reach Me:</h2>
+        <div class="logo">
+            <a href="https://www.facebook.com/ariel.peaceo" target="_blank"><i class="fa fa-facebook-official"></i></a>
+            <a href="https://twitter.com/?lang=en" target="_blank"><i class="fa fa-twitter"></i></a>
+            <a href="https://www.instagram.com/ariel_pcgcheals/" target="_blank"><i class="fa fa-instagram"></i></a>
+        </div>
+      </div>
+    </footer>
+    
+    <script>
+      const btn = document.getElementById("btn").addEventListener("click", clickshow);
+
+    function clickshow() {
+        document.getElementById("drop-content").classList.toggle("show");
+    }
+
+    // For closing dropdown content when clicked outside the btnDrop
+    window.onclick = function(event) {
+        if (!event.target.matches('.btnDrop')) {
+          let dropd = document.getElementsByClassName("dropconten");
+          if (dropd[0].classList.contains('show')) {
+            dropd[0].classList.remove('show');
+        }
+
+        }
+    }
+
+    var Indexslide = 1;
+
+    showSlider(Indexslide);
+
+    function pushSlide(index){
+        showSlider(Indexslide += index);
+    }
+
+    function currSlide(index){
+        showSlider( Indexslide = index)
+    }
+
+    function showSlider(index){
+        let slider = document.getElementsByClassName('imageslide');
+        if (index > slider.length){
+            Indexslide = 1;
+        }
+
+        if (index < 1) {
+            Indexslide = slider.length;
+        }
+
+        for(let i=0; i < slider.length; i++){
+            slider[i].style.display = "none";
+        }
+
+        slider[Indexslide-1].style.display = "block";
+    }
+    </script>
+</body>
+</html>
